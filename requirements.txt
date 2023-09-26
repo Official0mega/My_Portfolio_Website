@@ -1,0 +1,7 @@
+Django
+pycrypto
+cryptography		#for windows
+pycryptodome		#for windows
+gunicorn
+djangorestframework
+Pillow

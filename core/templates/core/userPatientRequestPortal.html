@@ -1,0 +1,72 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Enen
+{% endblock%}
+
+{% block bodytag %}
+
+{% load static %}
+
+<body background="{% static 'core/images/back.png' %}" style="background-size: auto auto;">
+
+    {% endblock %}
+
+    {% block body %}
+
+
+    <h1 style="text-align:center;color:black" class="display-4">
+        Your Request Answers
+    </h1>
+
+    <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+
+    <br>
+    <br>
+    <br>
+
+    {% for Assistance in user %}
+    {% if Assistance.isCompleted %}
+    <div class="card text-center" style="margin-left:5%;margin-right:5%;">
+
+        <div class="card-header">
+            Help Request
+        </div>
+
+        <div class="card-body">
+            <img class="doctor-image" src="{{ Assistance.doctor.image.url }}" alt="Patient ID">
+            <h1 class="card-title"> Dr. {{ Assistance.doctor.name }} </h1>
+
+            <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.doctor.contactNumber }}</a>
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.doctor.email }}</a>
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.doctor.address }}</a>
+            <br>
+            <br>
+            <h3>The Response</h3>
+            <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+            <p class="card-text lead" style="">{{ Assistance.assistanceText }}<br><br> <span>
+                    <h3>Your Case/Symptoms</h3>
+                    <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+                </span> {{ Assistance.symptoms }}</p>
+        </div>
+
+        <div class="card-footer text-muted">
+            {{ Assistance.timestamp }}
+        </div>
+
+    </div>
+
+    <br>
+    {% endif %}
+
+    {% empty %}
+
+    <h1 style="text-align:center;color:white">
+        You have no Requests right now.
+    </h1>
+
+    {% endfor %}
+
+    {% endblock %}

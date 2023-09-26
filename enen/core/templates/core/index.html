@@ -1,0 +1,366 @@
+{% extends "core/base.html" %}
+
+
+{% block title %}
+Enen
+{% endblock %}
+
+
+
+{% block bodytag %}
+
+{% load static %}
+
+<body background="{% static 'core/images/back.png' %}" style="background-size: auto auto;">
+
+{% endblock %}
+
+
+{% block body %}
+
+
+    {% if request.session.isLoggedIn %}
+    {% else %}
+    <div class ="main" style="display: flex;">
+        <div class="jumbotron" style="flex: 1; margin: 0 auto;">
+            <h1 class="display-4" style="color: green">Get immediate Virtual care for non-life-threatening</h1>
+            <hr class="my-4">
+            <p>We help people avoid in-person doctor's or clinic visits for minor health and questions that can easily
+                addressed via a one time message or Phone calls.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
+        </div>
+        <img src="{% static 'core/images/mom.png' %}" style="flex: 1;">
+    </div>
+    {% endif %}
+
+    <div>
+        {% if request.session.isLoggedIn %}
+        {% if request.session.isDoctor %}
+        <h1 class="display-3" style="text-align:center;color:black">Welcome Dr. {{ request.session.Name }}</h1>
+        <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+        
+        <div class="row" style="margin: 0 auto;">
+        
+            <div class="col-sm-6" style="margin-top:2%">
+                <div class="card">
+                    <div class="card-body">
+        
+                        <h5 class="card-title">Your Requests</h5>
+                        <li class="dropdown-divider" style="margin-right:15%"></li>
+                        <p class="card-text">Answer Requests.</p>
+                        <a href="{% url 'requests' %}" class="btn btn-primary">Here</a>
+        
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        {% else %}
+        <h1 class="display-3" style="text-align:center;color:black">SERVICES</h1>
+        <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+        
+        <div class="row" style="margin: 0 auto;">
+        
+            <div class="col-sm-6" style="margin-top:2%">
+                <div class="card">
+                    <div class="card-body">
+        
+                        <h5 class="card-title">Online Help</h5>
+                        <li class="dropdown-divider" style="margin-right:15%"></li>
+                        <p class="card-text">Get online hassle-free help from doctor.</p>
+                        <a href="{% url 'onlinehelp' %}" class="btn btn-primary">REQUEST HELP</a>
+        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-sm-6" style="margin-top:2%">
+                <div class="card">
+                    <div class="card-body">
+        
+                        <h5 class="card-title">Call Doctors</h5>
+                        <li class="dropdown-divider" style="margin-right:15%"></li>
+                        <p class="card-text">24 x 7 Help Line Availability.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">CALL</a>
+        
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        {% endif %}
+        {% else %}
+        <div style="margin-top:2em" class="choose-area pb_90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="headline">
+                            <p>
+                                Inspiration for creating the Enen web application came from the developer's passion to improve the lives of Ethiopian people through technology. He wanted to make a positive impact on the healthcare system in Ethiopia by providing easy access to medical assistance and health information. With Enen, people can receive immediate virtual care for non-life-threatening illnesses and injuries, avoiding the need for in-person doctor’s or clinic visits. His goal is to change and improve the healthcare system in Ethiopia, making it more accessible and convenient for everyone.
+                            </p>
+                            <h2>WHY CHOOSE ENEN</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: -1em">
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/1.jpg' %});">
+                            <div class="choose-icon">
+                                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Built with Love for You</h4>
+                                <p>
+                                    Enen have your efficiency and ease in mind,  so we have developed an user-friendly solution.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/2.jpg' %});">
+                            <div class="choose-icon">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Built on Latest technology</h4>
+                                <p>
+                                    Enen is built with Django and web based technologies. The technology we use is industry standard, reliable and is evolving with time.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/3.avif' %});">
+                            <div class="choose-icon">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Customizable & Scalable</h4>
+                                <p>
+                                    we customized the service to your needs. Also, as your needs grows, Enen can scale to meet your demands
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/4.avif' %});">
+                            <div class="choose-icon">
+                                <i class="fa fa-box" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Free Service</h4>
+                                <p>
+                                    No need to Pay for our service since we have been founded by non-profit organization. We provide comprehensive service with ease.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/5.avif' %});">
+                            <div class="choose-icon">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Excellent Customer Support</h4>
+                                <p>
+                                    We understand that there is no downtime in healthcare; so there is no downtime in our application.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/6.avif' %});">
+                            <div class="choose-icon">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>World Wide Access</h4>
+                                <p>
+                                    We offer our services to world wide users seeking virtual heathcare.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+    </div>
+    {% if request.session.isLoggedIn %}
+    {% else %}
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="headline">
+                <h2>Benefits</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" style="margin: 0 auto;">
+    
+        <div class="col-sm-6" style="margin-top:2%">
+            <div class="card">
+                <div class="card-body">
+    
+                    <h5 class="card-title">Online Help</h5>
+                    <li class="dropdown-divider" style="margin-right:15%"></li>
+                    <p class="card-text">Get online hassle-free help from doctor.</p>
+                    <a href="{% url 'onlinehelp' %}" class="btn btn-primary">REQUEST HELP</a>
+    
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-6" style="margin-top:2%">
+            <div class="card">
+                <div class="card-body">
+    
+                    <h5 class="card-title">Call Doctors</h5>
+                    <li class="dropdown-divider" style="margin-right:15%"></li>
+                    <p class="card-text">24 x 7 Help Line Availability.</p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">CALL</a>
+    
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="headline">
+                <h2>Testimonials</h2>
+            </div>
+        </div>
+    </div>
+    <section class="client_section layout_padding-bottom">
+        <div class="container">
+            <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-11 col-lg-10 mx-auto">
+                                <div class="box">
+                                    <div class="img-box">
+                                        <img src="{% static 'core/images/helen.jpg' %}" alt="" />
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="name">
+                                            <h6 style="color: green">
+                                                Helen Thomas
+                                            </h6>
+                                        </div>
+                                        <p>
+                                            It helped me to manage my wellbeing in a very efficient way. I am very happy with the service and would recommend it to anyone who is looking for a virtual care.
+                                        </p>
+                                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-11 col-lg-10 mx-auto">
+                                <div class="box">
+                                    <div class="img-box">
+                                        <img src="{% static 'core/images/abiy.jpg' %}" alt="" />
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="name">
+                                            <h6 style="color: green">
+                                               Abiy Ahmed
+                                            </h6>
+                                        </div>
+                                        <p>
+                                            What I like most about Enen is that it is very user friendly and easy to use. The support team is very helpful and they are always available to help us with any issues we face. I would definitely recommend Enen to any person in need of care.
+                                        </p>
+                                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-11 col-lg-10 mx-auto">
+                                <div class="box">
+                                    <div class="img-box">
+                                        <img src="{% static 'core/images/marteen.jpg' %}" alt="" />
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="name">
+                                            <h6 style="color: green">
+                                                Maarten Van Middelaar
+                                            </h6>
+                                        </div>
+                                        <p>
+                                            I have been using this software for the past 2 months and I am very satisfied with the   services provided by the company. The software is very user friendly and the support team is very helpful.
+                                        </p>
+                                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel_btn-container">
+                    <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
+                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
+                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if request.session.isLoggedIn %}
+    <div class="footer-bottom pt_50 pb_50" style="padding-top: 10px; bottom: 0; position: fixed; width: 100%">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="https://enen.bekalue.tech">Home</a></li>
+                            <li><a href="https://enen.bekalue.tech">Terms &amp; Conditions</a></li>
+                            <li><a href="https://enen.bekalue.tech">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="copy-text">
+                        <p>
+                            Copyright © 2023, Enen Virtual Health. Ltd. All Rights Reserved. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="footer-bottom pt_50 pb_50" style="padding-top: 10px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="https://twitter.com/BekaluEndrias">Twitter</a></li>
+                            <li><a href="https://www.linkedin.com/in/bekalue/">Linkedin</a></li>
+                            <li><a href="https://www.instagram.com/shashebela/">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="copy-text">
+                        <p>
+                            Copyright © 2023, Enen Virtual Health. Ltd. All Rights Reserved. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

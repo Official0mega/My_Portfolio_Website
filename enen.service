@@ -1,0 +1,13 @@
+[Unit]
+Description=Enen service daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/Enen/enen
+ExecStart=/home/ubuntu/.local/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/Enen/enen.sock enen.wsgi:application
+# To view any error on logs: sudo journalctl -u enen.service
+
+[Install]
+WantedBy=multi-user.target
